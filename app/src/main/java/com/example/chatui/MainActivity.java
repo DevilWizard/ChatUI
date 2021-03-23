@@ -8,19 +8,12 @@ import android.content.BroadcastReceiver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.ConnectivityManager;
-import android.net.Network;
-import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -31,15 +24,14 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     private List<Msg> msgList = new ArrayList<>();
-    private List<Msg> cacheMsgList = new ArrayList<>();
+    private final List<Msg> cacheMsgList = new ArrayList<>();
     private EditText inputText;
     private Button sendButton;
     private RecyclerView msgRecyclerView;
     private MsgAdapter adapter;
-    private NetWorkChangeReciever netWorkChangeReciever;
     private MydataBase mydataBase;
     private SQLiteDatabase db;
-    private boolean chatChange = false;
+    private final boolean chatChange = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,9 +89,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         cacheToStorage();
-
-           //会造成多次缓存相同内容的bug，待解决
-        //unregisterReceiver(netWorkChangeReciever);
     }
 
     private void initMsg() {

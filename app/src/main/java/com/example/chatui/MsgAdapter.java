@@ -58,6 +58,5 @@ public class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.ViewHolder> {
     @Override
     public int getItemCount() {
         return msgList.size();
-        
     }
 }
