@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         msgList = readCache();
         adapter = new MsgAdapter(msgList);
         msgRecyclerView.setAdapter(adapter);
-//        IntentFilter intentFilter = new IntentFilter();
+//      IntentFilter intentFilter = new IntentFilter();
 //        intentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
 //        netWorkChangeReciever = new NetWorkChangeReciever();
 //        registerReceiver(netWorkChangeReciever, intentFilter);
